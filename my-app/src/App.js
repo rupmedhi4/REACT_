@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import ExpenseItem from './Components/ExpenseItem';
+import ExpenseItem from './Components/Expense/ExpenseItem';
 import './App.css';
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
     <div>
       {expenseItems}
      
-
+   
       
     
     </div>

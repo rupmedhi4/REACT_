@@ -1,5 +1,7 @@
 import './ExpenseItem.css';
 import ExpenseDate from './ExpenseDate';
+import ExpenseDetails from './ExpenseDetails';
+
 
 
 
@@ -13,6 +15,7 @@ function ExpenseItem(props){
         <h2 className="expense-item h2">{props.title}</h2>
        
         <div className="expense-item__price ">{props.amount}</div>
+        {/* <ExpenseDetails title={props.title}/> */}
        </div>
     </div>
     )
