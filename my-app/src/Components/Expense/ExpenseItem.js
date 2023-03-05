@@ -4,6 +4,7 @@ import ExpenseDetails from "./ExpenseDetails";
 import ReactDOM from 'react-dom';
 import { useState } from "react";
 
+
 const ExpenseItem = (props)=> {
   const [title, setTitle] =useState(props.title);
   const [amount, setAmount] = useState(props.amount);
@@ -26,6 +27,7 @@ const Change_Expense = ()=>{
 
   return (
     <div>
+    
       <div className="expense-item">
         <ExpenseDate date={props.date} />
         <div className="expense-item__description">
