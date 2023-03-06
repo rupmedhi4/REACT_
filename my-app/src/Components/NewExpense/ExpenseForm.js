@@ -1,30 +1,63 @@
-import React from 'react';
-import './ExpenseForm.css';
+import React, { useState } from 'react'
+import './ExpenseForm.css'
+
 
 export default function ExpenseForm() {
+
+  const [EnteredTitle, SetEnteredTitle]= useState("");
+  const [EnteredAmount, SetEnteredAmount]= useState("");
+  const [EnteredDate, SetEnteredDate]= useState("");
+    
+        function showTitle(event){
+           SetEnteredTitle(event.target.value);
+        }
+       
+        function showAmount(event){
+          SetEnteredAmount(event.target.value);
+        }
+      
+        function showData(event){
+        SetEnteredDate(event.target.value);
+        }
+  
+
+        const SubmitBtn =(event)=>{
+            event.preventDefault();
+
+            const ObjData ={
+               title : EnteredTitle,
+               amount : EnteredAmount,
+               date : new Date(EnteredDate)
+            };
+
+            console.log(ObjData);
+
+
+        };
+
+
+   
+
+
   return (
-   <form>
-       <div className='new-expense__controls'>
+    <div>
+       <form onSubmit={SubmitBtn}>
+        <div className='new-expense__controls'>
+            <label htmlFor="text">Expense Title</label>
+            <input type="text" id="text"  onChange={showTitle}/>
 
-           <div className='new-expense__controls'>
-              <label>Title</label>
-              <input type="text" />
-           </div>
+            <label htmlFor="amount">Amount</label>
+            <input type="number" id="amount"  onChange={showAmount}/>
 
-           <div className='new-expense__controls'>
-              <label>Amount</label>
-              <input type="number" min="0.01" step="0.01" />
-           </div>
+            <label htmlFor="date">Date</label>
+            <input type="date" id="date"  onChange={showData}/>
 
-           <div className='new-expense__controls'>
-              <label>Date</label>
-              <input type="date" min="2019-01-01" max="2023-03-31" />
-           </div>
+            <button type='submit' id="submit">Submit</button>
+            
+        </div>
 
-       </div>
-       <div className='new-expense__actions'>
-        <button type='submit'>Submit</button>
-       </div>
-   </form>
+       </form>
+    </div>
   )
 }
+
