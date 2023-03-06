@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import ExpenseItem from './Components/Expense/ExpenseItem';
 import './App.css';
-import ExpenseForm from './Components/Expense/ExpenseForm';
+import NewExpense from './Components/NewExpense/NewExpense';
 
 function App() {
   let LocationOfExpenditure = [
@@ -42,7 +42,8 @@ function App() {
  
   return (
     <div>
-     <ExpenseForm/>
+     {/* <ExpenseForm/> */}
+     <NewExpense/>
       {expenseItems}
      
    
