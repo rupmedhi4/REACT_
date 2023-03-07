@@ -1,10 +1,11 @@
+import React, { useState } from 'react'
 import logo from './logo.svg';
 import ExpenseItem from './Components/Expense/ExpenseItem';
 import './App.css';
 import NewExpense from './Components/NewExpense/NewExpense';
 
 function App() {
-  let LocationOfExpenditure = [
+  const LocationOfExpenditure = [
     {
       
       title: 'Toilet Paper',
@@ -28,8 +29,24 @@ function App() {
     },
   ];
 
-  const expenseItems = [];
-  LocationOfExpenditure.forEach((expense, index) => {
+ 
+
+  // const addExpenseHandler = (expense)=>{
+     
+     
+  // };
+
+  const [expenses, setExpenses] = useState(LocationOfExpenditure);
+
+  const addExpenseHandler = (expense) => {
+    setExpenses((PreexpenseItems) => {
+      return [...PreexpenseItems, expense];
+    });
+  };
+
+
+   const expenseItems = [];
+  expenses.forEach((expense, index) => {
     expenseItems.push(
       <ExpenseItem
         title={expense.title}
@@ -38,17 +55,13 @@ function App() {
       />
     );
   });
-  
  
   return (
     <div>
      {/* <ExpenseForm/> */}
-     <NewExpense/>
+     <NewExpense onAddExpense={addExpenseHandler}/>
       {expenseItems}
-     
-   
       
-    
     </div>
   );
 }

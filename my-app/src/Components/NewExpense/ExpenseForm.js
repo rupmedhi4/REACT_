@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './ExpenseForm.css'
 
 
-export default function ExpenseForm() {
+export default function ExpenseForm(props) {
 
   const [EnteredTitle, SetEnteredTitle]= useState("");
   const [EnteredAmount, SetEnteredAmount]= useState("");
@@ -18,25 +18,25 @@ export default function ExpenseForm() {
       
         function showData(event){
         SetEnteredDate(event.target.value);
-        }
+        } 
   
 
-        const SubmitBtn =(event)=>{
+        function SubmitBtn(event) {
             event.preventDefault();
-
-            const ObjData ={
-               title : EnteredTitle,
-               amount : EnteredAmount,
-               date : new Date(EnteredDate)
+            const ObjData = {
+              title: EnteredTitle,
+              amount: EnteredAmount,
+              date: new Date(EnteredDate)
             };
 
-            console.log(ObjData);
+            props.onSaveExpenseData(ObjData);
 
+            SetEnteredTitle("");
+            SetEnteredAmount("");
+            SetEnteredDate("");
 
-        };
+          }
 
-
-   
 
 
   return (
@@ -44,13 +44,13 @@ export default function ExpenseForm() {
        <form onSubmit={SubmitBtn}>
         <div className='new-expense__controls'>
             <label htmlFor="text">Expense Title</label>
-            <input type="text" id="text"  onChange={showTitle}/>
+            <input type="text" id="text" value={EnteredTitle} onChange={showTitle}/>
 
             <label htmlFor="amount">Amount</label>
-            <input type="number" id="amount"  onChange={showAmount}/>
+            <input type="number" id="amount" value={EnteredAmount} onChange={showAmount}/>
 
             <label htmlFor="date">Date</label>
-            <input type="date" id="date"  onChange={showData}/>
+            <input type="date" id="date" value={EnteredDate} onChange={showData}/>
 
             <button type='submit' id="submit">Submit</button>
             
